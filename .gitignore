@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+work/
+backup/
+projects/drago/
+projects/dragonesmoke/
+projects/space-racing/
+assets/screenshots/dragonesmoke*
