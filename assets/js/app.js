@@ -42,7 +42,7 @@
   }
   function render(category) {
     grid.replaceChildren();
-    projects.filter(project => project.category === category).forEach(project => {
+    projects.filter(project => category === 'templates' || project.category === category).forEach(project => {
       const card = document.createElement('button'); card.type = 'button'; card.className = 'project-card';
       const cover = document.createElement('div'); cover.className = `cover ${project.coverClass}`;
       const type = document.createElement('span'); type.className = 'cover-type'; type.textContent = project.type;
@@ -62,7 +62,7 @@
     });
   }
   let categoryVersion = 0;
-  let currentCategory = 'completed';
+  let currentCategory = 'templates';
   document.querySelectorAll('[data-category]').forEach(tab => tab.addEventListener('click', async () => {
     const nextCategory = tab.dataset.category;
     if (nextCategory === currentCategory) return;
@@ -99,7 +99,8 @@
   }
   window.addEventListener('telegram-ready', connectTelegram, {once:true});
   connectTelegram();
-  render('completed');
+  document.querySelectorAll('[data-category]').forEach(tab=>{const count=tab.dataset.category==='templates'?projects.length:projects.filter(project=>project.category===tab.dataset.category).length;tab.querySelector('span').textContent=String(count).padStart(2,'0');});
+  render('templates');
   window.dispatchEvent(new Event('tinellab-ready'));
 })();
 
