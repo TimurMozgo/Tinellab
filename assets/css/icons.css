@@ -1,0 +1,10 @@
+.ui-icon{width:1em;height:1em;display:inline-block;vertical-align:-.12em;flex-shrink:0;color:inherit;overflow:visible}
+.round-arrow .ui-icon{width:25px;height:25px}
+.discipline-strip .ui-icon{width:19px;height:19px;vertical-align:middle}
+.contact-spark .ui-icon{width:1em;height:1em;stroke-width:1}
+.header-contact .ui-icon,.header-write .ui-icon,.floating-nav .ui-icon{width:14px;height:14px}
+.close .ui-icon{width:20px;height:20px}
+.card-action .ui-icon{width:19px;height:19px}
+.form-submit .ui-icon,.contact-cta .ui-icon{width:20px;height:20px}
+.footer-links .ui-icon{width:11px;height:11px}
+.channel-picker .ui-icon{width:12px;height:12px}
