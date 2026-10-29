@@ -1,5 +1,6 @@
 (() => {
   const paths = {
+    '✓': 'm5 12 4 4L19 6',
     '↗': 'M5 19 19 5M5 5h14v14',
     '↘': 'M5 5 19 19M5 19h14V5',
     '↓': 'M12 4v16m-7-7 7 7 7-7',
@@ -8,7 +9,7 @@
     '✕': 'm6 6 12 12M18 6 6 18',
     '✳': 'M12 2v20M2 12h20M5 5l14 14M19 5 5 19'
   };
-  const pattern = /[↗↘↓←→✕✳]/g;
+  const pattern = /[↗↘↓←→✕✳✓]/g;
   function replaceSymbols(root) {
     const walker = document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
     const nodes=[];
@@ -35,4 +36,5 @@
   replaceSymbols(document.body);
   observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 })();
+
 

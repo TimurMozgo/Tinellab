@@ -11,21 +11,7 @@
     label.textContent = text;
   }
   root.dataset.motion = 'full';
-  // Reveal only after loader is dismissed; unobserved content stays accessible without JS.
-  function reveal() {
-    const nodes = document.querySelectorAll('.hero > *, .section-heading, .tabs, .grid, .approach > *, .contact > *');
-    if (!('IntersectionObserver' in window)) return;
-    observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, { threshold: .08 });
-    nodes.forEach((node, i) => {
-      node.classList.add('reveal');
-      node.style.setProperty('--reveal-delay', `${Math.min(i % 4, 3) * 65}ms`);
-      observer.observe(node);
-    });
-  }
+  function reveal() { window.dispatchEvent(new Event('tinellab-boot-ready')); }
   async function ready() {
     if (started) return;
     started = true;
@@ -46,4 +32,5 @@
   window.addEventListener('tinellab-ready', ready, {once:true});
   window.addEventListener('telegram-ready', () => window.Telegram?.WebApp?.ready(), {once:true});
 })();
+
 
