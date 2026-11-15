@@ -1,9 +1,76 @@
 // Общая витрина решений; вкладка «Игры» показывает только игровые проекты.
 window.TINELLAB_PROJECTS = [
   {
+    "id": "brio",
+    "category": "templates",
+    "name": "BRIO",
+    "label": "Барбершоп",
+    "type": "TELEGRAM MINI APP",
+    "description": "Услуги, мастера и запись на удобное время.",
+    "detail": "Клиент выбирает услугу и мастера, собирает корзину и подбирает время визита. Записи в демо сохраняются только в браузере.",
+    "coverImage": "assets/covers/brio.jpg",
+    "launchUrl": "projects/brio/index.html",
+    "gallery": [
+      {
+        "image": "assets/screenshots/brio-1.jpg",
+        "title": "Главный экран",
+        "text": "Главная знакомит с барбершопом и ведёт к услугам."
+      },
+      {
+        "image": "assets/screenshots/brio-2.jpg",
+        "title": "Каталог услуг",
+        "text": "В карточках видны стоимость и продолжительность услуги."
+      },
+      {
+        "image": "assets/screenshots/brio-3.jpg",
+        "title": "Корзина",
+        "text": "Выбранные услуги и сумма собраны перед записью."
+      },
+      {
+        "image": "assets/screenshots/brio-4.jpg",
+        "title": "Выбор даты и времени",
+        "text": "Клиент выбирает мастера и время визита."
+      }
+    ]
+  },
+  {
+    "id": "maison-rose",
+    "category": "templates",
+    "name": "Maison Rose",
+    "label": "Салон красоты",
+    "type": "TELEGRAM MINI APP",
+    "description": "Каталог процедур, корзина и запись к мастеру.",
+    "detail": "В приложении можно посмотреть процедуры и специалистов, выбрать удобное время и пройти сценарий записи. Записи в демо сохраняются только в браузере.",
+    "coverImage": "assets/covers/maison-rose.jpg",
+    "launchUrl": "projects/maison-rose/index.html",
+    "gallery": [
+      {
+        "image": "assets/screenshots/maison-rose-1.jpg",
+        "title": "Главный экран",
+        "text": "Витрина знакомит с салоном и его услугами."
+      },
+      {
+        "image": "assets/screenshots/maison-rose-2.jpg",
+        "title": "Детали процедуры",
+        "text": "Карточка помогает оценить стоимость и длительность процедуры."
+      },
+      {
+        "image": "assets/screenshots/maison-rose-3.jpg",
+        "title": "Корзина",
+        "text": "В корзине можно проверить выбранные процедуры."
+      },
+      {
+        "image": "assets/screenshots/maison-rose-4.jpg",
+        "title": "Онлайн-запись",
+        "text": "Форма ведёт от выбора мастера и даты к подтверждению визита."
+      }
+    ]
+  },
+  {
     "id": "militarycoin",
     "category": "templates",
     "name": "MilitaryCoin",
+    "coverImage": "assets/covers/militarycoin.jpg",
     "label": "Магазин коллекций",
     "type": "TELEGRAM MINI APP",
     "description": "Каталог коллекционных товаров с фотогалереей и корзиной.",

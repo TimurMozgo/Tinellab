@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="description" content="BRIO — сучасний барбершоп. Оберіть послугу та запишіться до майстра за кілька хвилин.">
+  <title>BRIO — барбершоп</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">B<span>✦</span></span><span class="brand-name">BRIO<span>BARBERSHOP</span></span></div>
+      <div class="top-actions"><span class="location"><svg viewBox="0 0 24 24" fill="none"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="1.7"/></svg> Київ</span><button class="icon-button avatar-button" id="profileShortcut" aria-label="Відкрити кабінет"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 20c.5-3.7 2.8-5.5 6.5-5.5s6 1.8 6.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button></div>
+    </header>
+    <main id="main" class="main-content" aria-live="polite"></main>
+    <nav class="bottom-nav" aria-label="Основна навігація">
+      <button class="nav-item active" data-tab="home" aria-label="Головна"><svg viewBox="0 0 24 24" fill="none"><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-7h6v7" stroke="currentColor" stroke-width="1.7"/></svg><span>Головна</span></button>
+      <button class="nav-item" data-tab="cart" aria-label="Кошик"><span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h16l-1.2 12H5.2L4 8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 9V6a3 3 0 0 1 6 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><i id="cartBadge" class="cart-badge hidden"></i></span><span>Кошик</span></button>
+      <button class="nav-item" data-tab="account" aria-label="Кабінет"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M5.5 20c.5-3.7 2.8-5.5 6.5-5.5s6 1.8 6.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Кабінет</span></button>
+    </nav>
+    <div id="overlayRoot"></div>
+    <div id="toast" class="toast" role="status"></div>
+  </div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="app.js"></script>
+<script src='portfolio.js'></script>
+</body>
+</html>

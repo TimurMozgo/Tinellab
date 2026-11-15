@@ -14,11 +14,26 @@
     dialog.classList.add('leaving');
     closeTimer = setTimeout(() => dialog.close(), document.documentElement.dataset.motion === 'reduced' ? 0 : 220);
   }
+  function createCover(project, isCard = false) {
+    const cover = document.createElement('div');
+    cover.className = 'cover';
+    if (project.coverImage && isCard) {
+      cover.classList.add('cover-with-art', `cover-${project.id}`);
+      const image = document.createElement('img');
+      image.src = project.coverImage;
+      image.alt = '';
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      cover.append(image);
+      return cover;
+    }
+    if (project.coverClass) cover.classList.add(project.coverClass);
+    return cover;
+  }
   function openProject(project) {
     details.replaceChildren();
-    const cover = document.createElement('div');
-    cover.className = `cover ${project.coverClass}`;
-    cover.textContent = project.monogram;
+    const cover = createCover(project);
+    cover.textContent = project.monogram || project.name;
     const body = document.createElement('div'); body.className = 'detail-body';
     const label = document.createElement('p'); label.className = 'eyebrow'; label.textContent = project.label;
     const title = document.createElement('h2'); title.id = 'project-title'; title.textContent = project.name;
@@ -44,7 +59,8 @@
     grid.replaceChildren();
     projects.filter(project => category === 'templates' || project.category === category).forEach(project => {
       const card = document.createElement('button'); card.type = 'button'; card.className = 'project-card';
-      const cover = document.createElement('div'); cover.className = `cover ${project.coverClass}`;
+      const cover = createCover(project, true);
+      if (!project.coverImage) {
       const type = document.createElement('span'); type.className = 'cover-type'; type.textContent = project.type;
       const mark = document.createElement('strong'); mark.textContent = project.monogram;
       const caption = document.createElement('span'); caption.className = 'cover-caption'; caption.textContent = 'TINELLAB / ' + project.name;
@@ -52,6 +68,7 @@
       (project.gallery || []).slice(0,2).forEach((item,index)=>{
         const screenshot=document.createElement('img');screenshot.src=item.image;screenshot.alt='';screenshot.loading='lazy';screenshot.decoding='async';screenshot.className='project-preview'+(index?' project-preview-secondary':'');cover.append(screenshot);
       });
+      }
       const body = document.createElement('div'); body.className = 'card-body';
       const label = document.createElement('span'); label.className = 'badge'; label.textContent = project.label;
       const title = document.createElement('h3'); title.textContent = project.name;
