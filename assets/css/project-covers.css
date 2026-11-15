@@ -1,11 +1,14 @@
-.project-card .cover-with-art {
-  display: block;
-  padding: 12px;
-  background: #101318;
+.project-card .cover {
+  height: auto;
+  aspect-ratio: 1;
 }
 
-.project-card .cover-brio { background: #231910; }
-.project-card .cover-maison-rose { background: #cfb69f; }
+.project-card .cover-with-art {
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
 
 .project-card .cover-with-art::before,
 .project-card .cover-with-art::after { display: none; }
