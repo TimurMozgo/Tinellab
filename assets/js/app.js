@@ -3,11 +3,33 @@
   const grid = document.querySelector('#project-grid');
   const dialog = document.querySelector('#project-dialog');
   const details = document.querySelector('#project-details');
+  const screenshotViewer = document.createElement('dialog');
+  screenshotViewer.className = 'screenshot-viewer';
+  screenshotViewer.setAttribute('aria-label', 'Просмотр скриншота');
+  const closeScreenshot = document.createElement('button');
+  closeScreenshot.type = 'button';
+  closeScreenshot.className = 'close';
+  closeScreenshot.setAttribute('aria-label', 'Закрыть скриншот');
+  closeScreenshot.textContent = '×';
+  const screenshot = document.createElement('img');
+  screenshotViewer.append(closeScreenshot, screenshot);
+  document.body.append(screenshotViewer);
+  closeScreenshot.addEventListener('click', () => screenshotViewer.close());
+  screenshotViewer.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    event.preventDefault();
+    screenshotViewer.close();
+  });
+  screenshotViewer.addEventListener('click', event => {
+    if (event.target === screenshotViewer) screenshotViewer.close();
+  });
+
   let tg = window.Telegram?.WebApp;
   let closing = false;
   let closeTimer;
   tg?.ready();
   function closeProject() {
+    if (screenshotViewer.open) { screenshotViewer.close(); return; }
     if (window.TinellabPlayer?.active) { window.TinellabPlayer.close(); return; }
     if (!dialog.open || closing) return;
     closing = true;
@@ -43,10 +65,19 @@
     dialog.classList.toggle('has-gallery', Boolean(project.gallery));
     for (const item of project.gallery || []) {
       const row = document.createElement('section'); row.className = 'case-row';
-      const link = document.createElement('a'); link.href = item.image; link.target = '_blank'; link.rel = 'noopener'; link.setAttribute('aria-label', 'Увеличить: ' + item.title);
-      const img = document.createElement('img'); img.src = item.image; img.alt = item.title + ' — ' + project.name; img.loading = 'lazy'; img.width = 390; img.height = 650; link.append(img);
+      const thumbnail = document.createElement('button');
+      thumbnail.type = 'button';
+      thumbnail.className = 'screenshot-thumbnail';
+      thumbnail.setAttribute('aria-label', 'Увеличить: ' + item.title);
+      thumbnail.addEventListener('click', () => {
+        screenshot.src = item.image;
+        screenshot.alt = item.title + ' — ' + project.name;
+        screenshotViewer.showModal();
+        closeScreenshot.focus();
+      });
+      const img = document.createElement('img'); img.src = item.image; img.alt = item.title + ' — ' + project.name; img.loading = 'lazy'; img.width = 390; img.height = 650; thumbnail.append(img);
       const copy = document.createElement('div'); const heading = document.createElement('h3'); heading.textContent = item.title;
-      const text = document.createElement('p'); text.textContent = item.text; copy.append(heading,text); row.append(link,copy); body.append(row);
+      const text = document.createElement('p'); text.textContent = item.text; copy.append(heading,text); row.append(thumbnail,copy); body.append(row);
     }
     if (project.launchUrl) {
       const play = document.createElement('button'); play.className = 'button gold'; play.textContent = project.category === 'games' ? 'Играть ↗' : 'Открыть проект ↗';
@@ -120,11 +151,3 @@
   render('templates');
   window.dispatchEvent(new Event('tinellab-ready'));
 })();
-
-
-
-
-
-
-
-
