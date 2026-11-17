@@ -47,3 +47,29 @@ html{scroll-padding-top:105px}
   margin-inline: auto;
   object-fit: contain;
 }
+
+#project-dialog .dialog-top {
+  gap: 12px;
+}
+
+#project-dialog .project-launch {
+  margin-inline-start: auto;
+  padding: 10px 16px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+#project-dialog .project-launch[hidden] {
+  display: none;
+}
+
+#project-dialog .dialog-top .close {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  #project-dialog .dialog-top .eyebrow {
+    display: none;
+  }
+}

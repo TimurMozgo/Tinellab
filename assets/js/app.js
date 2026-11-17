@@ -79,12 +79,13 @@
       const copy = document.createElement('div'); const heading = document.createElement('h3'); heading.textContent = item.title;
       const text = document.createElement('p'); text.textContent = item.text; copy.append(heading,text); row.append(thumbnail,copy); body.append(row);
     }
-    if (project.launchUrl) {
-      const play = document.createElement('button'); play.className = 'button gold'; play.textContent = project.category === 'games' ? 'Играть ↗' : 'Открыть проект ↗';
-      play.addEventListener('click', () => window.TinellabPlayer.open(project)); body.append(play);
-    } else body.append(note);
+    const launch = dialog.querySelector('.project-launch');
+    launch.hidden = !project.launchUrl;
+    launch.textContent = project.category === 'games' ? 'Играть ↗' : 'Открыть приложение ↗';
+    launch.onclick = project.launchUrl ? () => window.TinellabPlayer.open(project) : null;
+    if (!project.launchUrl) body.append(note);
     details.append(cover, body);
-    dialog.showModal(); document.body.classList.add('modal-open'); tg?.BackButton?.show();
+    dialog.showModal(); dialog.scrollTop = 0; document.body.classList.add('modal-open'); tg?.BackButton?.show();
   }
   function render(category) {
     grid.replaceChildren();
