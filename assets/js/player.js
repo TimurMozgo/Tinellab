@@ -19,13 +19,26 @@
     loading.hidden = false; retry.hidden = true; status.textContent = 'Загрузка приложения…';
     frame = document.createElement('iframe'); frame.title = current.name;
     frame.setAttribute('allow','autoplay'); frame.src = current.launchUrl;
+    const readySelector = current.readySelector;
+    if (readySelector) {
+      const launchingFrame = frame;
+      launchingFrame.addEventListener('load', () => {
+        if (token !== attempt || loading.hidden || !launchingFrame.contentDocument?.querySelector(readySelector)) return;
+        markReady();
+      });
+    }
     stage.append(frame);
     timer = setTimeout(() => { if (token === attempt) { status.textContent = 'Приложение не ответило. Попробуйте ещё раз.'; retry.hidden = false; } }, 15000);
+  }
+  function markReady() {
+    clearTimeout(timer);
+    loading.hidden = true;
+    frame.focus();
   }
   window.addEventListener('message', event => {
     if (!frame || event.source !== frame.contentWindow || event.origin !== location.origin) return;
     if (event.data?.type === 'tinellab-game-ready') {
-      clearTimeout(timer); loading.hidden = true; frame.focus();
+      markReady();
     }
     if (event.data?.type === 'tinellab-game-error') { clearTimeout(timer); status.textContent = 'Не удалось загрузить приложение.'; retry.hidden = false; }
   });

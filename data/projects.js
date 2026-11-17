@@ -1,6 +1,40 @@
 // Общая витрина решений; вкладка «Игры» показывает только игровые проекты.
 window.TINELLAB_PROJECTS = [
   {
+    "id": "kayak",
+    "category": "templates",
+    "name": "kayak.dp.ua",
+    "label": "Прокат и водные походы",
+    "type": "TELEGRAM MINI APP",
+    "description": "Аренда каяков и SUP-досок, водные походы и бронирование.",
+    "detail": "В мини-приложении можно выбрать снаряжение или маршрут, посмотреть тарифы и пройти бронирование. В этой версии заявки сохраняются на устройстве.",
+    "coverImage": "assets/covers/kayak.jpg",
+    "launchUrl": "projects/kayak/index.html",
+    "readySelector": "#app .home-choice",
+    "gallery": [
+      {
+        "image": "assets/screenshots/kayak-1.jpg",
+        "title": "Выбор формата отдыха",
+        "text": "Со стартового экрана можно перейти к самостоятельной аренде или выбрать поход."
+      },
+      {
+        "image": "assets/screenshots/kayak-2.jpg",
+        "title": "Каталог проката",
+        "text": "В каталоге собраны каяки, байдарки и SUP-доски с ценами и условиями аренды."
+      },
+      {
+        "image": "assets/screenshots/kayak-3.jpg",
+        "title": "Водные походы",
+        "text": "Карточки маршрутов помогают выбрать программу и посмотреть даты."
+      },
+      {
+        "image": "assets/screenshots/kayak-4.jpg",
+        "title": "Настройка бронирования",
+        "text": "Перед добавлением в корзину можно выбрать параметры аренды."
+      }
+    ]
+  },
+  {
     "id": "brio",
     "category": "templates",
     "name": "BRIO",
