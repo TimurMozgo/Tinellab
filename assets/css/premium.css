@@ -48,28 +48,43 @@ html{scroll-padding-top:105px}
   object-fit: contain;
 }
 
-#project-dialog .dialog-top {
-  gap: 12px;
+#project-dialog[open] {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#project-dialog .dialog-top,
+#project-dialog .project-dialog-footer {
+  flex-shrink: 0;
+}
+
+#project-details {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+#project-dialog .project-dialog-footer {
+  display: block;
+  margin: 0;
+  padding: 12px 20px;
+  border-top: 1px solid var(--line);
+  background: #11120f;
+}
+
+#project-dialog .project-dialog-footer[hidden] {
+  display: none;
 }
 
 #project-dialog .project-launch {
-  margin-inline-start: auto;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
   padding: 10px 16px;
-  min-height: 44px;
-  white-space: nowrap;
-}
-
-#project-dialog .project-launch[hidden] {
-  display: none;
 }
 
 #project-dialog .dialog-top .close {
   min-width: 44px;
   min-height: 44px;
-}
-
-@media (max-width: 480px) {
-  #project-dialog .dialog-top .eyebrow {
-    display: none;
-  }
 }

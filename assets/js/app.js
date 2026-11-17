@@ -80,12 +80,12 @@
       const text = document.createElement('p'); text.textContent = item.text; copy.append(heading,text); row.append(thumbnail,copy); body.append(row);
     }
     const launch = dialog.querySelector('.project-launch');
-    launch.hidden = !project.launchUrl;
+    dialog.querySelector('.project-dialog-footer').hidden = !project.launchUrl;
     launch.textContent = project.category === 'games' ? 'Играть ↗' : 'Открыть приложение ↗';
     launch.onclick = project.launchUrl ? () => window.TinellabPlayer.open(project) : null;
     if (!project.launchUrl) body.append(note);
     details.append(cover, body);
-    dialog.showModal(); dialog.scrollTop = 0; document.body.classList.add('modal-open'); tg?.BackButton?.show();
+    dialog.showModal(); details.scrollTop = 0; document.body.classList.add('modal-open'); tg?.BackButton?.show();
   }
   function render(category) {
     grid.replaceChildren();
