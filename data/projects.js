@@ -139,6 +139,7 @@ window.TINELLAB_PROJECTS = [
     "id": "space-racing",
     "category": "games",
     "name": "SpaceRacing",
+    "coverImage": "assets/covers/space-racing.jpg",
     "label": "Игра",
     "type": "WEB GAME",
     "description": "Космический раннер с кораблями и прогрессом игрока.",
