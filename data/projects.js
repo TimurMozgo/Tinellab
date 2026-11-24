@@ -1,5 +1,39 @@
 // Общая витрина решений; вкладка «Игры» показывает только игровые проекты.
 window.TINELLAB_PROJECTS = [
+{
+  "id": "flora",
+  "category": "templates",
+  "name": "FLORA",
+  "label": "Цветочная мастерская",
+  "type": "TELEGRAM MINI APP",
+  "description": "Букеты, выбор размера, избранное и корзина.",
+  "detail": "Магазин букетов с каталогом и корзиной. Оформление заказов и история в кабинете требуют подключения сервера.",
+  "coverImage": "assets/covers/flora.jpg",
+  "launchUrl": "projects/flora/index.html",
+  "readySelector": "#cards .product-card",
+  "gallery": [
+    {
+      "image": "assets/screenshots/flora-1.jpg",
+      "title": "Знакомство с мастерской",
+      "text": "Главный экран знакомит с FLORA и приглашает выбрать букет."
+    },
+    {
+      "image": "assets/screenshots/flora-2.jpg",
+      "title": "Каталог букетов",
+      "text": "Категории, состав и цена помогают выбрать цветочную композицию."
+    },
+    {
+      "image": "assets/screenshots/flora-3.jpg",
+      "title": "Выбор букета и размера",
+      "text": "Фотогалерея, описание и размеры букета собраны в карточке."
+    },
+    {
+      "image": "assets/screenshots/flora-4.jpg",
+      "title": "Корзина",
+      "text": "Выбранные букеты, их размеры, количество и итоговая сумма."
+    }
+  ]
+},
   {
     "id": "kayak",
     "category": "templates",
