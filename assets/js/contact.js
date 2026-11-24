@@ -25,8 +25,8 @@
     const phone = phoneInput.value.trim();
     const telegram = telegramInput.value.trim();
     const digits = phone.replace(/\D/g, '');
-    if (digits.length < 7 || digits.length > 15 || !/^\+?[\d\s().-]+$/.test(phone)) {
-      phoneInput.setCustomValidity(t('Введите номер телефона: от 7 до 15 цифр.'));
+    if (!/^380\d{9}$/.test(digits) || !/^\+?[\d\s().-]+$/.test(phone)) {
+      phoneInput.setCustomValidity(t('Введите украинский номер: +380 и 9 цифр.'));
     }
     if (!/^(?:@|https:\/\/t\.me\/)?[a-zA-Z][a-zA-Z0-9_]{4,31}\/?$/.test(telegram)) {
       telegramInput.setCustomValidity(t('Укажите Telegram в формате @username или https://t.me/username.'));
@@ -40,8 +40,8 @@
     }
     const ukrainian = window.TinellabI18n?.language === 'uk';
     const text = ukrainian
-      ? `Вітаю, TINELLAB!\n\nІм’я: ${name}\nТелефон: ${phone}\nTelegram: ${telegram}\n\nПро проєкт:\n${idea}`
-      : `Здравствуйте, TINELLAB!\n\nИмя: ${name}\nТелефон: ${phone}\nTelegram: ${telegram}\n\nО проекте:\n${idea}`;
+      ? `Вітаю, TINELLAB!\n\nІм’я: ${name}\nТелефон: +${digits}\nTelegram: ${telegram}\n\nПро проєкт:\n${idea}`
+      : `Здравствуйте, TINELLAB!\n\nИмя: ${name}\nТелефон: +${digits}\nTelegram: ${telegram}\n\nО проекте:\n${idea}`;
     const url = 'https://t.me/TinellabStudio?text=' + encodeURIComponent(text);
     const tg = window.Telegram?.WebApp;
     if (tg?.initData && tg.isVersionAtLeast?.('7.0')) tg.openTelegramLink(url);

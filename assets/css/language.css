@@ -1,5 +1,7 @@
 .language-picker {
   display: flex;
+  position: relative;
+  isolation: isolate;
   gap: 2px;
   padding: 3px;
   border: 1px solid var(--line);
@@ -9,6 +11,10 @@
 .language-picker button {
   border: 0;
   padding: 8px;
+  width: 36px;
+  position: relative;
+  z-index: 1;
+  transition: color .3s ease;
   border-radius: 20px;
   background: transparent;
   color: var(--muted);
@@ -16,7 +22,7 @@
 }
 .language-picker button[aria-pressed="true"] {
   color: #111;
-  background: var(--gold);
+
 }
 #telegram-hint {
   display: block;
@@ -30,4 +36,31 @@
   .language-picker { margin-inline-start: auto; }
   .header-write { flex-shrink: 0; }
   html[lang="uk"] #hero-title { font-size: clamp(37px, 9.3vw, 57px); }
+}
+
+.language-picker::before {
+  content: '';
+  position: absolute;
+  inset: 3px auto 3px 3px;
+  width: 36px;
+  border-radius: 20px;
+  background: var(--gold);
+  transform: translateX(38px);
+  transition: transform .42s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;
+}
+.language-picker[data-active="uk"]::before {
+  transform: translateX(0);
+}
+.language-picker[data-active="uk"] [data-language="uk"],
+.language-picker[data-active="ru"] [data-language="ru"] {
+  color: #111;
+}
+.language-picker[data-active="uk"] [data-language="ru"],
+.language-picker[data-active="ru"] [data-language="uk"] {
+  color: var(--muted);
+}
+@media (prefers-reduced-motion: reduce) {
+  .language-picker::before,
+  .language-picker button { transition: none; }
 }
