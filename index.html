@@ -5,9 +5,9 @@
 <meta name="theme-color" content="#0b0b0a"><meta name="description" content="TINELLAB — магазины, каталоги и запись на услуги прямо в Telegram. Создаём Mini Apps для вашего бизнеса.">
 <title>TINELLAB — Telegram-приложения для бизнеса</title>
 <link rel="stylesheet" href="assets/css/main.css?v=gallery"><link rel="stylesheet" href="assets/css/premium.css?v=bottom-launch"><link rel="stylesheet" href="assets/css/contact.css">
-<script defer src="assets/js/icons.js"></script><script defer src="assets/js/boot.js"></script><script defer src="data/projects.js?v=concise"></script><script defer src="assets/js/player.js?v=kayak"></script><script defer src="assets/js/app.js?v=bottom-launch"></script><script defer src="assets/js/contact.js?v=ua-phone"></script><script defer src="assets/js/premium.js"></script>
+<script defer src="assets/js/icons.js"></script><script defer src="assets/js/boot.js"></script><script defer src="data/projects.js?v=concise"></script><script defer src="assets/js/player.js?v=kayak"></script><script defer src="assets/js/app.js?v=bottom-launch"></script><script defer src="assets/js/contact.js?v=field-feedback"></script><script defer src="assets/js/premium.js"></script>
 <script async src="https://telegram.org/js/telegram-web-app.js" onload="window.dispatchEvent(new Event('telegram-ready'))"></script>
-<link rel="stylesheet" href="assets/css/icons.css"><link rel="stylesheet" href="assets/css/story.css"><link rel="stylesheet" href="assets/css/project-covers.css?v=3"><script defer src="assets/js/scroll-scenes.js"></script><link rel="stylesheet" href="assets/css/language.css?v=motion"><script defer src="assets/js/i18n.js?v=concise-motion"></script></head>
+<link rel="stylesheet" href="assets/css/icons.css"><link rel="stylesheet" href="assets/css/story.css"><link rel="stylesheet" href="assets/css/project-covers.css?v=3"><script defer src="assets/js/scroll-scenes.js"></script><link rel="stylesheet" href="assets/css/language.css?v=motion"><script defer src="assets/js/i18n.js?v=field-feedback"></script><link rel="stylesheet" href="assets/css/contact-feedback.css"></head>
 <body>
 <div id="boot" hidden role="status" aria-label="Подготовка портфолио"><div class="boot-logo">TINELLAB</div><div class="boot-track" role="progressbar" aria-label="Готовность интерфейса" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8"><i></i></div><div class="boot-label">Идея обретает форму</div></div>
 <script>document.getElementById('boot').hidden=false;window.bootDeadline=setTimeout(function(){document.getElementById('boot').hidden=true},6000)</script>
@@ -48,18 +48,16 @@
 <footer><a class="brand" href="#home">TINEL<span>LAB</span></a><div class="footer-links"><a href="https://www.instagram.com/tinellabstudio/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://t.me/TinellabStudio" target="_blank" rel="noopener">Telegram ↗</a><a href="mailto:tinellabstudio@gmail.com">tinellabstudio@gmail.com ↗</a></div><span>© TINELLAB 2026</span></footer>
 <nav class="floating-nav" aria-label="Навигация портфолио"><a href="#approach">Возможности</a><a href="#projects">Шаблоны</a><button type="button" data-contact>Написать <span>↗</span></button></nav>
 <dialog id="project-dialog" aria-labelledby="project-title"><div class="dialog-top"><span class="eyebrow">TINELLAB / ОБЗОР РЕШЕНИЯ</span><button type="button" class="close" aria-label="Закрыть карточку" autofocus>✕</button></div><div id="project-details"></div><footer class="project-dialog-footer" hidden><button type="button" class="button gold project-launch"></button></footer></dialog>
-<dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title" aria-describedby="contact-intro"><div class="form-topline"><span>TINELLAB / LET’S CREATE</span><button type="button" class="close" aria-label="Закрыть контакты">✕</button></div><div class="contact-form-inner"><p class="eyebrow">ХОРОШИЕ ПРОЕКТЫ НАЧИНАЮТСЯ С РАЗГОВОРА</p><h2 id="contact-title"><span>Есть идея?</span><br>Расскажите нам.</h2><p id="contact-intro" class="contact-intro">Несколько слов о вашей задаче — и мы познакомимся ближе.</p><form id="inquiry-form">
+<dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-title" aria-describedby="contact-intro"><div class="form-topline"><span>TINELLAB / LET’S CREATE</span><button type="button" class="close" aria-label="Закрыть контакты">✕</button></div><div class="contact-form-inner"><p class="eyebrow">ХОРОШИЕ ПРОЕКТЫ НАЧИНАЮТСЯ С РАЗГОВОРА</p><h2 id="contact-title"><span>Есть идея?</span><br>Расскажите нам.</h2><p id="contact-intro" class="contact-intro">Несколько слов о вашей задаче — и мы познакомимся ближе.</p><form id="inquiry-form" novalidate>
   <div class="form-row">
     <label>Как вас зовут <span>*</span><input name="name" autocomplete="name" maxlength="100" required placeholder="Ваше имя"></label>
     <label>Номер телефона <span>*</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="32" required placeholder="+380 XX XXX XX XX"></label>
   </div>
-  <label>Ваш Telegram <span>*</span><input name="telegram" autocomplete="off" maxlength="64" required placeholder="@username" aria-describedby="telegram-hint"><small id="telegram-hint">Для связи, если не получится дозвониться.</small></label>
-  <label>Пару слов о проекте <span>*</span><textarea name="idea" rows="3" maxlength="4000" required placeholder="Что хотите создать? Какие функции важны? Добавьте ссылку на референс."></textarea></label>
-  <div class="form-bottom"><button class="button gold form-submit" type="submit">Продолжить в Telegram <span>↗</span></button></div>
-  <p class="form-note">Откроем Telegram с текстом заявки. Проверьте его и отправьте сообщение.</p>
+  <label>Пару слов о проекте (необязательно)<textarea name="idea" rows="3" maxlength="4000" placeholder="Что хотите создать? Какие функции важны? Добавьте ссылку на референс."></textarea></label>
+  <div class="form-bottom"><button class="button gold form-submit" type="submit">Оставить заявку <span>↗</span></button></div>
+  <p class="form-note">Свяжемся с вами по телефону.</p>
   <p class="form-status" role="status" aria-live="polite"></p>
-</form>
-</div></dialog>
+</form></div><div class="inquiry-success" hidden role="status"><div class="inquiry-success-mark" aria-hidden="true">✓</div><h2 tabindex="-1">Спасибо, что выбираете TINELLAB!</h2><p>Заявка получена. Мы свяжемся с вами по телефону.</p><button type="button" class="button gold">Готово</button></div></dialog>
 </body></html>
 
 
