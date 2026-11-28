@@ -24,6 +24,9 @@
     if (event.target === screenshotViewer) screenshotViewer.close();
   });
 
+  const showAllButton = document.querySelector('#show-all-templates');
+  let allTemplatesVisible = false;
+
   let tg = window.Telegram?.WebApp;
   let closing = false;
   let closeTimer;
@@ -87,9 +90,15 @@
     details.append(cover, body);
     dialog.showModal(); details.scrollTop = 0; document.body.classList.add('modal-open'); tg?.BackButton?.show();
   }
-  function render(category) {
-    grid.replaceChildren();
-    projects.filter(project => category === 'templates' || project.category === category).forEach(project => {
+  function render(category, append = false) {
+    if (!append) grid.replaceChildren();
+    grid.dataset.category = category;
+    const matching = projects.filter(project => category === 'templates' || project.category === category);
+    const visible = category === 'templates' && !allTemplatesVisible ? matching.slice(0, 3) : matching;
+    const cards = append ? visible.slice(3) : visible;
+    showAllButton.hidden = category !== 'templates' || allTemplatesVisible || matching.length <= 3;
+    showAllButton.setAttribute('aria-expanded', String(allTemplatesVisible));
+    cards.forEach(project => {
       const card = document.createElement('button'); card.type = 'button'; card.className = 'project-card';
       const cover = createCover(project, true);
       if (!project.coverImage) {
@@ -116,6 +125,8 @@
     const nextCategory = tab.dataset.category;
     if (nextCategory === currentCategory) return;
     currentCategory = nextCategory;
+    allTemplatesVisible = false;
+    showAllButton.hidden = true;
     const version = ++categoryVersion;
     document.querySelectorAll('[data-category]').forEach(item => item.setAttribute('aria-pressed', String(item === tab)));
     grid.getAnimations().forEach(animation => animation.cancel());
@@ -135,6 +146,38 @@
     if (version !== categoryVersion) return;
     grid.style.overflow = ''; grid.inert = false; grid.removeAttribute('aria-busy');
   }));
+  showAllButton.addEventListener('click', async () => {
+    if (currentCategory !== 'templates' || allTemplatesVisible || grid.inert) return;
+    const version = ++categoryVersion;
+    const oldHeight = grid.getBoundingClientRect().height;
+    allTemplatesVisible = true;
+    render('templates', true);
+    const newHeight = grid.getBoundingClientRect().height;
+    const newCards = [...grid.children].slice(3);
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      newCards[0]?.focus({preventScroll: true});
+      return;
+    }
+    grid.inert = true;
+    grid.setAttribute('aria-busy', 'true');
+    grid.style.overflow = 'clip';
+    const resize = grid.animate(
+      [{height: oldHeight + 'px'}, {height: newHeight + 'px'}],
+      {duration: 520, easing: 'cubic-bezier(.2,.7,.2,1)'}
+    );
+    const appearances = newCards.map((card, index) => card.animate(
+      [{opacity: 0, transform: 'translateY(20px)'}, {opacity: 1, transform: 'none'}],
+      {duration: 400, delay: index * 45, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards'}
+    ));
+    await Promise.allSettled([resize.finished, ...appearances.map(animation => animation.finished)]);
+    if (version !== categoryVersion) return;
+    grid.style.overflow = '';
+    grid.inert = false;
+    grid.removeAttribute('aria-busy');
+    newCards[0]?.focus({preventScroll: true});
+  });
+
   dialog.querySelector('.close').addEventListener('click', closeProject);
   dialog.addEventListener('cancel', event => { event.preventDefault(); closeProject(); });
   dialog.addEventListener('click', event => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeProject(); } });
