@@ -1,6 +1,40 @@
 // Общая витрина решений; вкладка «Игры» показывает только игровые проекты.
 window.TINELLAB_PROJECTS = [
 {
+  "id": "terra-ride",
+  "category": "templates",
+  "name": "TERRA RIDE",
+  "label": "Прокат квадроциклов",
+  "type": "TELEGRAM MINI APP",
+  "description": "Квадротуры, маршруты и выбор поездки в Карпатах.",
+  "detail": "Каталог квадротуров с избранным и корзиной. Проверка свободного времени, бронирование и история поездок требуют подключения сервера.",
+  "coverImage": "assets/covers/terra-ride.jpg",
+  "launchUrl": "projects/terra-ride/index.html",
+  "readySelector": "#catalog .card",
+  "gallery": [
+    {
+      "image": "assets/screenshots/terra-ride-1.jpg",
+      "title": "Знакомство с прокатом",
+      "text": "Первый экран передаёт атмосферу поездки и ведёт к выбору маршрута."
+    },
+    {
+      "image": "assets/screenshots/terra-ride-2.jpg",
+      "title": "Каталог маршрутов",
+      "text": "Длительность, расстояние, сложность и цена помогают сравнить поездки."
+    },
+    {
+      "image": "assets/screenshots/terra-ride-3.jpg",
+      "title": "Детали поездки",
+      "text": "Фотографии маршрута, условия участия и информация об инструкторе."
+    },
+    {
+      "image": "assets/screenshots/terra-ride-4.jpg",
+      "title": "Корзина",
+      "text": "Выбранные поездки, количество участников и общая стоимость."
+    }
+  ]
+},
+{
   "id": "flora",
   "category": "templates",
   "name": "FLORA",
