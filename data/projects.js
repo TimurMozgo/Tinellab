@@ -8,7 +8,7 @@ window.TINELLAB_PROJECTS = [
   "type": "TELEGRAM MINI APP",
   "description": "Квадротуры, маршруты и выбор поездки в Карпатах.",
   "detail": "Каталог квадротуров с избранным и корзиной. Проверка свободного времени, бронирование и история поездок требуют подключения сервера.",
-  "coverImage": "assets/covers/terra-ride.jpg",
+  "coverImage": "assets/covers/terra-ride-v2.jpg",
   "launchUrl": "projects/terra-ride/index.html",
   "readySelector": "#catalog .card",
   "gallery": [
